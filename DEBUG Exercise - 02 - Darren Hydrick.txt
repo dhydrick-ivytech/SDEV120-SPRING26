@@ -1,0 +1,85 @@
+// This pseudocode is intended to display employee net pay values.
+// All employees have a standard $45 deduction from their checks.
+// If an employee does not earn enough to cover the deduction
+// an error message is displayed.
+start
+   Declarations
+      string name
+      num hours
+      num rate
+      string DEDUCTION = 45
+      string EOFNAME = "ZZZ"
+      num gross
+      num net
+   output "Enter first name or ", EOFNAME, " to quit"
+   input name
+   if name not equal to EOFNAME
+      output "Enter hours worked for ", name
+      input hours
+      output "Enter hourly rate for ", name
+      input rate
+      gross = hours * rate
+      net = gross - DEDUCTION
+      while net > 0 then
+         output "Net pay for ", name, " is ", net
+      else
+          output "Deductions not covered. Net is 0."
+      endwhile
+      output "Enter next name or ", EOFNAME, " to quit"
+      input name
+   endif
+   output "End of job"
+stop
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Problems and updated PSEUDOCODE:
+
+1. Data Type Mismatch: It declared DEDUCTION as a string, but since we are trying to use it in a mathematical calculation (net = gross - DEDUCTION).
+	-- Changed string DEDUCTION = 45 to num DEDUCTION = 45.
+
+2. Loop to Selection: The loop will check if the net pay is positive. Because the value of net never changes inside that loop the program will print the net pay forever. 
+	-- Changed to an if-else statement instead of a while loop for the deduction check.
+
+3. Created reputition: The if statement only processes one employee. Once it finished the first person, it hits the endif and goes straight to "End of job." Since there are multiple employees I added a while statement until "ZZZ" is entered, this way it will loop until "ZZZ" is entered for the name.
+	-- Changed the if name <> to EOFNAME to a while name <> to EOFNAME.
+
+4. Logic Error: In the DEDUCTION prompt it says an error should be displayed if the employee doesn't earn enough to cover the deduction. The current logic checks net > 0, which would fail if an employee earned exactly $45.
+	--  In the DEDUCTION section changed if to Check if gross >= DEDUCTION.
+
+
+
+start
+    Declarations
+        string name
+        num hours
+        num rate
+        num DEDUCTION = 45       // Changed to num
+        string EOFNAME = "ZZZ"
+        num gross
+        num net
+
+    output "Enter first name or ", EOFNAME, " to quit"
+    input name
+
+    while name <> EOFNAME        // Changed if to while to allow multiple employees
+        output "Enter hours worked for ", name
+        input hours
+        output "Enter hourly rate for ", name
+        input rate
+        
+        gross = hours * rate
+        
+        if gross >= DEDUCTION then    // Changed while to if
+            net = gross - DEDUCTION
+            output "Net pay for ", name, " is ", net
+        else
+            output "Deductions not covered. Net is 0."
+        endif
+
+        output "Enter next name or ", EOFNAME, " to quit"
+        input name
+    endwhile
+
+    output "End of job"
+stop

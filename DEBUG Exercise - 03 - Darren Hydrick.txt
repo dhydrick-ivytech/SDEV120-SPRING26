@@ -1,0 +1,110 @@
+// This pseudocode is intended to display
+// employee net pay values. All employees have a standard
+// $45 deduction from their checks.
+// If an employee does not earn enough to cover the deduction
+// an error message is displayed.
+// This example is modularized.
+start
+   Declarations
+      string name
+      string EOFNAME = ZZZZ
+   while name not equal to EOFNAME
+      housekeeping()
+   endwhile
+   while name not equal to EOFNAME
+      mainLoop()
+   endwhile
+   while name not equal to EOFNAME
+      finish()
+   endwhile
+stop
+
+housekeeping()
+   output "Enter first name or ", EOFNAME, " to quit "
+return
+
+mainLoop()
+   Declarations
+      num hours
+      num rate
+      num DEDUCTION = 45
+      num net
+   output "Enter hours worked for ", name
+   input hours
+   output "Enter hourly rate for ", name
+   input rate
+   gross = hours * rate
+   net = gross - DEDUCTION
+   if net > 0 then
+      output "Net pay for ", name, " is ", net
+   else
+      output "Deductions not covered. Net is 0."
+   endif
+   output "Enter next name or ", EOFNAME, " to quit "
+   input name
+return
+
+finish()
+   output "End of job"
+return
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Problems and updated PSEUDOCODE:
+
+1. Missing name input - We need to get the first name before the loop starts so the while condition has something to check.
+
+	-- updated housekeeping() to ask for the name and input the name.
+	-- added name input at the end of the module to udpate name
+
+2. Variable Scope: 
+	-- name was never assigned in the housekeeping() module, there was an output prompt, but never an name input.
+	-- gross was not defined in mainLoop(), gross was never declared in the Declarations section of that module.
+
+3. Redundant Loop for finish() - Placing the finish() module inside a while loop means it would either never run (because the loop condition is now false) or run infinitely.
+	-- removed finish() module from mainLoop()
+
+
+start
+   Declarations
+      string name
+      string EOFNAME = "ZZZZ"
+   
+   housekeeping() // Includes the first 'input name'
+   
+   while name not equal to EOFNAME
+      mainLoop() // Processes current name and gets the NEXT name
+   endwhile
+   
+   finish() // Runs once at the end
+stop
+
+housekeeping()
+   output "Enter first name or ", EOFNAME, " to quit "
+   input name  // added name input
+return
+
+mainLoop()
+   Declarations
+      num hours
+      num rate
+      num DEDUCTION = 45
+      num net
+      num gross // Added declaration
+   output "Enter hours worked for ", name
+   input hours
+   output "Enter hourly rate for ", name
+   input rate
+   
+   gross = hours * rate
+   net = gross - DEDUCTION
+   
+   if net > 0 then
+      output "Net pay for ", name, " is ", net
+   else
+      output "Deductions not covered."
+   endif
+
+   output "Enter next name or ", EOFNAME, " to quit "
+   input name // added name input for the next loop iteration
+return
