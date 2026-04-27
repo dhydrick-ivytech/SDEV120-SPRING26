@@ -1,0 +1,13 @@
+Begin
+    declare totalMiles, totalGallons, milesPergallon
+    input totalMiles = "Please enter the total miles traveled:"
+    input totalGallons = "Please enter the total gallons used:"
+
+    IF totalGallons is not equal to 0 then
+        SET milesPergallon = totalMiles / totalGallons
+    
+        Print "Your Miles Per Gallon is: " + milesPergallon
+    ELSE 
+        Print "Invaild Input: Total Gallons cannot be 0."
+    END IF
+End

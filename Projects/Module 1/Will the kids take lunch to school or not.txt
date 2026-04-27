@@ -1,0 +1,26 @@
+Begin
+    declare isSchoolday AS BOOLEAN
+    declare kid1, kid2 AS Strings
+    declare takeLunch
+
+    Print "Is today a School day? 
+    Input isSchoolday
+
+
+    IF isSchoolday = True then
+        input kid1 = "Does Kid1 want to take their lunch?" 
+
+        input kid2 = "Does Kid2 want to take their lunch?" 
+
+        IF kid1 OR kid2 = Yes
+            SET takeLunch = True
+            Print "Make your lunch"
+        ELSE
+            SET takeLunch = False
+            Print "They will eat School lunch."
+        END IF
+    Else 
+        SET takeLunch = False
+        Print "Today is not a school day."
+    END IF
+End

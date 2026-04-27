@@ -1,0 +1,13 @@
+Begin
+    declare monthlyRent, numDays, costPerday
+    input monthlyRent = "Please enter your Monthly Rental Rate:"
+    input numDays = "Please enter the Number of days in the Month:"
+
+    IF numDays is not equal to 0 then
+        SET costPerday = monthlyRent / numDays
+    
+        Print "Your Daily Rental Cost is: " + costPerday
+    ELSE 
+        Print "Invaild Input: Number of days in the Month cannot be 0."
+    END IF
+End
