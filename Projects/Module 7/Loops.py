@@ -12,7 +12,16 @@
 #     else:
 #         print(i)'''
 
-scores=[90, 85, 78, 92, 88, 60, 55, 70, 82, 95]
-for grade in scores:
-    if grade > 60:
-        print(grade)
+# scores=[90, 85, 78, 92, 88, 60, 55, 70, 82, 95]
+# for grade in scores:
+#     if grade > 60:
+#         print(grade)
+
+
+sum = 0
+
+n = int(input("Enter a number (or 0 to stop): "))
+while n != 0:
+    sum += n
+    n = int(input("Enter a number (or 0 to stop): "))
+print("The sum of the numbers is:", sum)    
